@@ -23,43 +23,36 @@ installation is necessary. You run it using the ```java -jar```  command.
 
 ```
 java -jar target/idealo-toy-robot-0.1.0.jar
-
 or
 mvn spring-boot:run
 ```
 
 ## About the service
  The service is just a REST-API service. 
-###  Here are some endpoints you can call:
+ Here are some endpoints you can call:
 
- ### PLACE will create and put the toy robot on the table in position X,Y and facing NORTH,
+### PLACE will create and put the toy robot on the table in position X,Y and facing NORTH,
 SOUTH, EAST or WEST. The origin (0,0) can be considered to be the SOUTH WEST
 most corner.
-
- ```
+```
 GET /place/{x}/{y}/{facing}
 
- Response: HTTP 200
+Response: HTTP 200
 Content: robot json
-
 {
     "idRobot": "59",
     "x": 0,
     "y": 0,
     "facing": "NORTH"
 }
-
 ```
 
- ### MOVE will move the toy robot one unit forward in the direction it is currently facing
-and throws an exception if robot not found.
-
- ```
+### MOVE will move the toy robot one unit forward in the direction it is currently facing and throws an exception if robot not found.
+```
 GET /move/{idRobot}
 
- Response: HTTP 200
+Response: HTTP 200
 Content: robot json
-
 {
     "idRobot": "59",
     "x": 0,
@@ -68,7 +61,7 @@ Content: robot json
 }
 
 throws an exception if robot not found.
- Response: HTTP 400
+Response: HTTP 400
 
 {
     "timestamp": "2018-06-17T11:02:03.050+0000",
@@ -80,13 +73,12 @@ throws an exception if robot not found.
 
 ```
 
- ### LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without
-changing the position of the robot and throws an exception if robot not found.
+### LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without changing the position of the robot and throws an exception if robot not found.
 
- ```
+```
 GET /rotate/{idRobot}/{left_right}
 
- Response: HTTP 200
+Response: HTTP 200
 Content: robot json
 
 {
@@ -97,7 +89,7 @@ Content: robot json
 }
 
 throws an exception if robot not found.
- Response: HTTP 400
+Response: HTTP 400
 
 {
     "timestamp": "2018-06-17T11:02:03.050+0000",
@@ -109,10 +101,9 @@ throws an exception if robot not found.
 
 ```
 
- ### REPORT will announce the X,Y and F of the robot
-and throws an exception if robot not found.
+### REPORT will announce the X,Y and F of the robot and throws an exception if robot not found.
 
- ```
+```
 GET /report/{idRobot}
 
  Response: HTTP 200
@@ -129,7 +120,7 @@ Content: robot json
 }
 
 throws an exception if robot not found.
- Response: HTTP 400
+Response: HTTP 400
 
 {
     "timestamp": "2018-06-17T11:02:03.050+0000",
