@@ -27,6 +27,13 @@ or
 mvn spring-boot:run
 ```
 
+More interestingly, you can start angularJS client in the browser:
+
+```
+localhost:8080
+
+```
+
 ## About the service
  The service is just a REST-API service. 
  Here are some endpoints you can call:
