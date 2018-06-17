@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+<title>Hello Robot</title>
+<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/main.css" rel="stylesheet">
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/angularjs/1.6.9/angular.min.js"></script>
+<script src="/app.js"></script>
+</head>
+<body>
+	<noscript>
+		<h2 style="color: #ff0000">Seems your browser doesn't support
+			Javascript! Please enable Javascript and reload this page!</h2>
+	</noscript>
+	<div id="main-content" class="container"
+		ng-controller="robotController">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<div ng-show="error" class="alert alert-danger" role="alert">
+						{{ errorMessage }}</div>
+					<div class="alert alert-info" role="alert">
+						{{ reportMessage }}</div>
+						
+					<label for="connect">Robot:</label>
+					<p>Robot: {{ selectedRobot.idRobot }}</p>
+					<p>X: {{ selectedRobot.x }}</p>
+					<p>Y: {{ selectedRobot.y }}</p>
+					<p>Facing: {{ selectedRobot.facing }}</p>
+
+
+					<canvas id="robotTabletopCanvas" width="300" height="300"
+					style="border:1px solid #c3c3c3;">
+					Your browser does not support the canvas element.
+					</canvas>
+				</div>
+
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Enter new Robot</h3>
+					</div>
+					<div class="panel-body">
+						<form>
+							<div class="form-group">
+								<input type="text" ng-model="x_position" class="form-control" placeholder="X Postion"> 
+								<input type="text" ng-model="y_position" class="form-control" placeholder="Y Postion"> 
+								<input type="text" ng-model="facing" class="form-control" placeholder="Facing">
+							</div>
+							<button ng-click="initializeRobot()" class="btn btn-default"
+								type="submit">Send</button>
+						</form>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Move this Robot</h3>
+					</div>
+					<div class="panel-body">
+						<form>
+							<div class="form-group">
+								<ul class="list-group">
+									<li ng-repeat="robot in listRobots" class="list-group-item list-group-item-success">
+									  <div class="btn-group" role="group">
+										<button ng-click="moveRobot(robot)" class="btn btn-info pull-right" type="submit">
+											<i class="glyphicon glyphicon-move"></i>
+										</button>
+										<button ng-click="rotateRobot(robot, 'LEFT')" id="glyphicon-left" class="btn btn-info pull-right" type="submit">
+											<i class="glyphicon glyphicon-repeat"></i>
+										</button>
+										<button ng-click="rotateRobot(robot, 'RIGHT')" class="btn btn-info pull-right" type="submit">
+											<i class="glyphicon glyphicon-repeat"></i>
+										</button>
+										<button ng-click="reportRobot(robot)" class="btn btn-info pull-right" type="submit">
+											REPORT
+										</button>
+									  </div>
+									  <h3>{{ robot.idRobot }}</h3>
+									  <h3>{{ robot.facing }}</h3>
+
+									</li>
+								</ul>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
