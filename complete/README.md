@@ -15,7 +15,8 @@ however further valid movement commands must still be allowed.
 
 This application is packaged as a war which has Tomcat 8 embedded. No Tomcat or JBoss
 installation is necessary. You run it using the ```java -jar```  command.
- * Clone this repository 
+
+* Clone this repository 
 * Make sure you are using JDK 1.8 and Maven 3.x
 * You can build the project and run the tests by running ```mvn clean package```
 * Once successfully built, you can run the service by one of these two methods:
@@ -26,9 +27,7 @@ java -jar target/idealo-toy-robot-0.1.0.jar
 or
 mvn spring-boot:run
 ```
-
-More interestingly, you can start angularJS client in the browser:
-
+More interestingly, you can start agularJS client in the browser:
 ```
 localhost:8080
 
@@ -36,7 +35,16 @@ localhost:8080
 
 ## About the service
  The service is just a REST-API service. 
- Here are some endpoints you can call:
+ 
+### Swagger API documentation
+Every Spring Boot microservice that is annotated with `@EnableSwagger2` exposes the Swagger API documentation under the path `/v2/api-docs`.
+Here's the Swagger UI for our sample microservices system, available under:
+```
+http://localhost:8080/swagger-ui.html
+
+```
+
+Here are some endpoints you can call:
 
 ### PLACE will create and put the toy robot on the table in position X,Y and facing NORTH,
 SOUTH, EAST or WEST. The origin (0,0) can be considered to be the SOUTH WEST
@@ -113,7 +121,7 @@ Response: HTTP 400
 ```
 GET /report/{idRobot}
 
- Response: HTTP 200
+Response: HTTP 200
 Content: robot json
 
 {
